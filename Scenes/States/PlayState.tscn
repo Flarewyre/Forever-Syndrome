@@ -1,0 +1,444 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Assets/Other/Fonts/vcr.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/States/PlayState.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/States/PlayState/Health/SMBZHealth.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sprites/Characters/Icons/bf.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/UI/healthBar.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sounds/hit_sound.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Sprites/UI/hp_outlines.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/States/PlayState/StrumLine.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Mobile/MobilePlayControls.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Sprites/UI/progressBarBack.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/UI/progressBarOver.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/UI/hp_backing.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Other/Fonts/SuperMario286-18qg.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Assets/Sprites/UI/block.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Other/Fonts/SuperMarioBrothers-4nmp.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://Assets/Other/Fonts/arial.ttf" type="DynamicFontData" id=16]
+
+[sub_resource type="DynamicFont" id=9]
+size = 36
+use_filter = true
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 28
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 23
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 32
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 128
+outline_size = 12
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 15 )
+
+[sub_resource type="Animation" id=13]
+resource_name = "RESET"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Countdown:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Countdown:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Countdown:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Countdown:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "READY" ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "fight"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Countdown:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.7, 1.5 ),
+"transitions": PoolRealArray( -2, 1, -2, 1 ),
+"update": 0,
+"values": [ -7.5, 0.0, 0.0, 7.5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Countdown:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7, 1.4 ),
+"transitions": PoolRealArray( -2, 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Countdown:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Countdown:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "FIGHT" ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "ready"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Countdown:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.7, 1.5 ),
+"transitions": PoolRealArray( -2, 1, -2, 1 ),
+"update": 0,
+"values": [ -7.5, 0.0, 0.0, 7.5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Countdown:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7, 1.4 ),
+"transitions": PoolRealArray( -2, 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Countdown:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Countdown:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "READY" ]
+}
+
+[node name="PlayState" type="Node2D"]
+script = ExtResource( 2 )
+rating_path = "res://Scenes/States/PlayState/Rating.tscn"
+PlayerStrumPath = NodePath("HUD/HudElements/PlayerStrumLine")
+EnemyStrumPath = NodePath("HUD/HudElements/EnemyStrumLine")
+PlayerCharacter = "bf"
+EnemyCharacter = "dad"
+GFCharacter = "gf"
+
+[node name="HealthSystem" type="Node2D" parent="."]
+script = ExtResource( 3 )
+health = 50.0
+
+[node name="HUD" type="CanvasLayer" parent="."]
+scale = Vector2( 0.7, 0.7 )
+transform = Transform2D( 0.7, 0, 0, 0.7, 0, 0 )
+
+[node name="HudElements" type="Node2D" parent="HUD"]
+position = Vector2( 687.786, 514.286 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="ColorRect" parent="HUD/HudElements"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -914.0
+margin_top = -514.0
+margin_right = 306.0
+margin_bottom = 172.0
+rect_scale = Vector2( 1.5, 1.5 )
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Ratings" type="Node2D" parent="HUD/HudElements"]
+
+[node name="PlayerStrumLine" parent="HUD/HudElements" instance=ExtResource( 8 )]
+position = Vector2( 93.574, -364.286 )
+
+[node name="EnemyStrumLine" parent="HUD/HudElements" instance=ExtResource( 8 )]
+position = Vector2( -580.715, -364.286 )
+
+[node name="HealthBar" type="TextureProgress" parent="HUD/HudElements"]
+anchor_left = 0.359
+anchor_top = 1.269
+anchor_right = 0.359
+anchor_bottom = 1.269
+margin_left = -80.0
+margin_top = 420.0
+margin_right = 521.0
+margin_bottom = 465.0
+rect_scale = Vector2( 1.35, 1.35 )
+value = 80.0
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 5 )
+fill_mode = 1
+tint_under = Color( 1, 0, 0, 1 )
+tint_progress = Color( 0.0784314, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="Sprite" parent="HUD/HudElements/HealthBar"]
+show_behind_parent = true
+position = Vector2( 268, -12.11 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 12 )
+
+[node name="Icon" type="Sprite" parent="HUD/HudElements/HealthBar"]
+show_behind_parent = true
+position = Vector2( 483, -5 )
+scale = Vector2( 4.5, 4.5 )
+texture = ExtResource( 4 )
+
+[node name="FG" type="Sprite" parent="HUD/HudElements/HealthBar"]
+self_modulate = Color( 0.341176, 0.780392, 0.972549, 1 )
+position = Vector2( 268, -12.11 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="HUD/HudElements/HealthBar"]
+margin_left = 135.0
+margin_top = -51.0
+margin_right = 440.0
+margin_bottom = -8.0
+custom_fonts/font = SubResource( 9 )
+text = "BOYFRIEND"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextBar" type="Label" parent="HUD/HudElements"]
+visible = false
+margin_left = -914.286
+margin_top = 446.0
+margin_right = 914.714
+margin_bottom = 494.004
+custom_fonts/font = SubResource( 5 )
+text = "Health: 0%"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopBar" type="Node2D" parent="HUD/HudElements"]
+position = Vector2( -685.715, -514.286 )
+
+[node name="Progress" type="TextureProgress" parent="HUD/HudElements/TopBar"]
+margin_right = 1371.43
+margin_bottom = 29.0
+step = 0.01
+value = 50.0
+texture_under = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
+tint_under = Color( 1, 1, 1, 0.145098 )
+tint_progress = Color( 1, 1, 1, 0.376471 )
+nine_patch_stretch = true
+
+[node name="TopBarLabel" type="Label" parent="HUD/HudElements/TopBar"]
+margin_top = 3.0
+margin_right = 1371.43
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 7 )
+text = "No-villians | HARD | 0:00"
+align = 1
+
+[node name="Score" type="Label" parent="HUD/HudElements"]
+margin_left = -652.0
+margin_top = 316.0
+margin_right = -415.0
+margin_bottom = 380.0
+rect_scale = Vector2( 1.375, 1.375 )
+custom_fonts/font = SubResource( 11 )
+text = "SCORE: 15912"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rank" type="Sprite" parent="HUD/HudElements"]
+position = Vector2( -468, 444 )
+scale = Vector2( 5.5, 5.5 )
+texture = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="HUD/HudElements/Rank"]
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 56.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 11 )
+text = "S"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="HUD/HudElements/Rank"]
+margin_left = -33.0
+margin_top = -8.0
+margin_right = 95.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 11 )
+text = "RANK"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Countdown" type="Label" parent="HUD/HudElements"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -205.0
+margin_top = -63.0
+margin_right = 205.0
+margin_bottom = 63.0
+rect_pivot_offset = Vector2( 205, 63 )
+custom_fonts/font = SubResource( 12 )
+text = "READY"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BotplayLabel" type="Node2D" parent="HUD/HudElements"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/HudElements"]
+anims/RESET = SubResource( 13 )
+anims/fight = SubResource( 14 )
+anims/ready = SubResource( 15 )
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="CountdownStream" type="AudioStreamPlayer" parent="Audio"]
+bus = "SFX"
+
+[node name="MissStream" type="AudioStreamPlayer" parent="Audio"]
+volume_db = 2.0
+bus = "SFX"
+
+[node name="HitsoundStream" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 6 )
+bus = "Hitsounds"
+
+[node name="Positions" type="Node2D" parent="."]
+
+[node name="Player" type="Position2D" parent="Positions"]
+position = Vector2( 1030, 640 )
+
+[node name="Enemy" type="Position2D" parent="Positions"]
+position = Vector2( 241, 640 )
+
+[node name="Girlfriend" type="Position2D" parent="Positions"]
+position = Vector2( 640, 462 )
+
+[node name="Rating" type="Position2D" parent="Positions"]
+
+[node name="Camera" type="Camera2D" parent="."]
+visible = false
+position = Vector2( 640, 360 )
+current = true
+smoothing_enabled = true
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="Ratings" type="Node" parent="."]
+
+[node name="MobilePlayStateControls" parent="." instance=ExtResource( 9 )]

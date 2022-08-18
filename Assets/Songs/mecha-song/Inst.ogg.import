@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Inst.ogg-6e5a56963f61af0f49a34ab956af33d9.oggstr"
+
+[deps]
+
+source_file="res://Assets/Songs/mecha-song/Inst.ogg"
+dest_files=[ "res://.import/Inst.ogg-6e5a56963f61af0f49a34ab956af33d9.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

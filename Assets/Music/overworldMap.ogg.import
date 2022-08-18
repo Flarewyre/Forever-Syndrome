@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/overworldMap.ogg-bdfac3f1b15d511866cd567e97dd78b3.oggstr"
+
+[deps]
+
+source_file="res://Assets/Music/overworldMap.ogg"
+dest_files=[ "res://.import/overworldMap.ogg-bdfac3f1b15d511866cd567e97dd78b3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

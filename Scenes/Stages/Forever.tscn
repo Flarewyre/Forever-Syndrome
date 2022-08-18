@@ -1,0 +1,1483 @@
+[gd_scene load_steps=68 format=2]
+
+[ext_resource path="res://Scenes/States/PlayState.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/ground.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/tanktiles.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/tracks.tres" type="Texture" id=4]
+[ext_resource path="res://Scripts/Stages/Forever/Ground.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/States/PlayState/Health/ForeverHealth.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Sprites/Characters/Lui Boyfriend Forever.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Characters/Small Boyfriend Forever.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/Characters/Boyfriend Forever.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sounds/forever_powerdown.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Sounds/deadtheme.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Sprites/Characters/Dead Boyfriend Forever.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Other/Fonts/accuracy.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Other/Fonts/marioforever2.png" type="Texture" id=14]
+[ext_resource path="res://Scripts/Stages/Forever/Accuracy.gd" type="Script" id=15]
+[ext_resource path="res://Scripts/Stages/Forever/Score.gd" type="Script" id=16]
+[ext_resource path="res://Assets/Other/Fonts/miss.png" type="Texture" id=17]
+[ext_resource path="res://Scripts/Stages/Forever/Miss.gd" type="Script" id=18]
+[ext_resource path="res://Scenes/Stages/Events.gd" type="Script" id=19]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/block.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/platform.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/bg/night2.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/bg/night1.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/bg/night3.png" type="Texture" id=24]
+[ext_resource path="res://Scenes/Stages/BGColor.gd" type="Script" id=25]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/question.tres" type="Texture" id=26]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/coin.tres" type="Texture" id=27]
+[ext_resource path="res://Scenes/Stages/Night.gd" type="Script" id=28]
+[ext_resource path="res://Scenes/Stages/RatingPos.gd" type="Script" id=29]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/humanlab.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/labhuman.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/platform2.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/bg/cloud.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/bg/cloud.tres" type="Texture" id=34]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/hammer.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/labhuman3.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Sprites/Stages/Forever/labhuman2.png" type="Texture" id=37]
+
+[sub_resource type="Animation" id=1]
+resource_name = "die"
+length = 3.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:velocity_active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:velocity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0, 1 ),
+"update": 1,
+"values": [ 0.0, -1000.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Dead")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 3.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reload"
+} ]
+}
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0.0313726, 0, 0, 1, 0.16, 0.1552, 0.1552, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+width = 720
+
+[sub_resource type="TileSet" id=4]
+0/name = "ground.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "ground.png 1"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 32, 32, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=5]
+0/name = "tanktiles.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "tanktiles.png 1"
+1/texture = ExtResource( 3 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 32, 0, 32, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "tanktiles.png 2"
+2/texture = ExtResource( 3 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 64, 0, 32, 32 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "tanktiles.png 3"
+3/texture = ExtResource( 3 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 96, 0, 32, 32 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "tanktiles.png 4"
+4/texture = ExtResource( 3 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 32, 32, 32 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "tanktiles.png 5"
+5/texture = ExtResource( 3 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 32, 32, 32, 32 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "tanktiles.png 6"
+6/texture = ExtResource( 3 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 64, 32, 32, 32 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+7/name = "tanktiles.png 7"
+7/texture = ExtResource( 3 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 96, 32, 32, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+8/name = "tanktiles.png 8"
+8/texture = ExtResource( 3 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 64, 32, 32 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0
+9/name = "tracks.tres 9"
+9/texture = ExtResource( 4 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 0, 0, 32, 32 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape_one_way = false
+9/shape_one_way_margin = 0.0
+9/shapes = [  ]
+9/z_index = 0
+10/name = "tracks.tres 10"
+10/texture = ExtResource( 4 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 32, 0, 32, 32 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape_one_way = false
+10/shape_one_way_margin = 0.0
+10/shapes = [  ]
+10/z_index = 0
+11/name = "tracks.tres 11"
+11/texture = ExtResource( 4 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 64, 0, 32, 32 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+11/shape_one_way = false
+11/shape_one_way_margin = 0.0
+11/shapes = [  ]
+11/z_index = 0
+12/name = "tanktiles.png 12"
+12/texture = ExtResource( 3 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 32, 64, 32, 32 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shape_offset = Vector2( 0, 0 )
+12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+12/shape_one_way = false
+12/shape_one_way_margin = 0.0
+12/shapes = [  ]
+12/z_index = 0
+13/name = "question.tres 13"
+13/texture = ExtResource( 26 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 0, 0, 32, 32 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 0, 0 )
+13/navigation_offset = Vector2( 0, 0 )
+13/shape_offset = Vector2( 0, 0 )
+13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+13/shape_one_way = false
+13/shape_one_way_margin = 0.0
+13/shapes = [  ]
+13/z_index = 0
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 0.164706, 0.243137, 0.345098, 1, 0.482353, 0.529412, 0.65098, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+width = 720
+
+[sub_resource type="TileSet" id=8]
+0/name = "block.png 0"
+0/texture = ExtResource( 20 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "night1.png 1"
+1/texture = ExtResource( 23 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 32, 128 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "night2.png 2"
+2/texture = ExtResource( 22 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 32, 32 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "coin.tres 3"
+3/texture = ExtResource( 27 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 32, 32 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "humanlab.png 4"
+4/texture = ExtResource( 30 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 32, 32 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "humanlab.png 5"
+5/texture = ExtResource( 30 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 32, 0, 32, 32 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "cloud.png 6"
+6/texture = ExtResource( 33 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 0, 0, 128, 64 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+7/name = "cloud.tres 7"
+7/texture = ExtResource( 34 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 64, 64 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends TileMap
+
+export (float) var speed = 1 
+
+func _physics_process(delta):
+	position.x -= delta * speed
+	if position.x < -32  * scale.x:
+		position.x = 0
+"
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends TextureRect
+
+export (float) var speed = 1 
+
+func _physics_process(delta):
+	rect_position.x -= delta * speed
+	if rect_position.x < -514  * rect_scale.x:
+		rect_position.x = 0
+"
+
+[sub_resource type="GDScript" id=11]
+script/source = "extends Node2D
+
+export(NodePath) var current_scene_path
+onready var current_scene = get_node(current_scene_path)
+
+export var activated = false
+export var target_pos : float
+
+export var speed : float
+
+var og_pos : Vector2
+var relative_pos0 : Vector2
+var relative_pos1 : Vector2
+
+var returning = false
+var wait_timer = 0.0
+
+var mario
+var bf
+
+func _ready():
+	for i in range(5):
+		yield(get_tree(), \"physics_frame\")
+	og_pos = $Platform.global_position
+	
+	mario = current_scene.get_node(\"Characters/Mario Forever\")
+	bf = current_scene.get_node(\"Characters/Boyfriend Forever\")
+	
+	relative_pos0 = og_pos - mario.global_position
+	relative_pos1 = og_pos - bf.global_position
+
+func _physics_process(delta):
+	if wait_timer > 0:
+		wait_timer -= delta
+		if wait_timer <= 0:
+			wait_timer = 0
+			returning = true
+	
+	if activated && !returning:
+		$Platform.global_position.y -= speed * delta
+		speed += 6
+		
+		if $Platform.global_position.y < target_pos:
+			$Platform.global_position.y = 1200
+			wait_timer = 1.5
+			activated = false
+
+		mario.global_position.y = $Platform.global_position.y - relative_pos0.y
+		bf.global_position.y = $Platform.global_position.y - relative_pos1.y
+	elif returning:
+		$Platform.global_position.y = lerp($Platform.global_position.y, og_pos.y, delta)
+		$Platform.global_position.y -= 20 * delta
+		
+		if $Platform.global_position.y <= og_pos.y:
+			returning = false
+			speed = 0
+			$Platform.global_position.y = og_pos.y
+
+		mario.global_position.y = $Platform.global_position.y - relative_pos0.y
+		bf.global_position.y = $Platform.global_position.y - relative_pos1.y
+"
+
+[sub_resource type="Gradient" id=12]
+colors = PoolColorArray( 0.0862745, 0.0862745, 0.313726, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
+width = 720
+
+[sub_resource type="GDScript" id=14]
+script/source = "extends TileMap
+
+export (NodePath) var copy_path
+onready var copy_node = get_node(copy_path)
+
+export (bool) var activated = false
+export (float) var speed = 1 
+
+func _physics_process(delta):
+	activated = copy_node.activated
+	speed = copy_node.speed / 2
+	if activated:
+		position.y += delta * speed
+		if position.y > 536 * scale.y:
+			position.y = 280 * scale.y
+"
+
+[sub_resource type="GDScript" id=15]
+script/source = "extends TileMap
+
+export (bool) var activated = false
+export (float) var speed = 1 
+
+func _physics_process(delta):
+	if activated:
+		position.y += delta * speed
+		if position.y > 536 * scale.y:
+			position.y = 280 * scale.y
+"
+
+[sub_resource type="AnimatedTexture" id=16]
+frames = 4
+fps = 21.0
+frame_0/texture = ExtResource( 31 )
+frame_0/delay_sec = 0.04
+frame_1/texture = ExtResource( 37 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 36 )
+frame_2/delay_sec = 0.04
+frame_3/texture = ExtResource( 37 )
+frame_3/delay_sec = 0.0
+
+[sub_resource type="GDScript" id=17]
+script/source = "extends Sprite
+
+export (NodePath) var copy_path
+onready var copy_node = get_node(copy_path)
+
+export (bool) var activated = false
+export (float) var speed = 1
+export (float) var move_speed = 1 
+
+var direction = 1
+
+func _physics_process(delta):
+	position.x += move_speed * direction * delta
+	if position.x < 925:
+		position.x = 925
+		direction = 1
+	if position.x > 975:
+		position.x = 975
+		direction = -1
+	
+	activated = copy_node.activated
+	speed = copy_node.speed
+	if activated:
+		position.y += delta * speed
+		if position.y > 536 * scale.y:
+			position.y = 280 * scale.y
+"
+
+[sub_resource type="Animation" id=18]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Tanks:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/Night:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/Tanks/TextureRect:is_cycling")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Background/Night:activated")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Background/Tanks/Ground:speed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("Events")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 4 ), 0.0 ],
+"method": "texture_fps"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Background/HumanLab:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Background/HumanLab/Terrain:activated")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Background/HumanLab/Terrain:speed")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 64.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Background/HumanLab/Labhuman/Sprite:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Background/HumanLab/Labhuman/CPUParticles2D:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Background/HumanLab:activated")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 5.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Tanks:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5.5 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Night:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/Night:activated")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=21]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Night:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/Night:activated")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=22]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Tanks:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Tanks/Ground:speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 96.0, 192.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Events")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 4 ), 7.0 ],
+"method": "texture_fps"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/Tanks/TextureRect:is_cycling")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=24]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Tanks:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=25]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/HumanLab:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/HumanLab/Terrain:activated")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/HumanLab/Terrain:speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 64.0, 3072.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/HumanLab/Labhuman/CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Background/HumanLab/Labhuman/Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "beat_304"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/HumanLab:activated")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/HumanLab:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Tanks/Ground:speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 192.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Events")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 4 ), 7.0 ],
+"method": "texture_fps"
+} ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "beat_324"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Tanks:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=30]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Tanks/TextureRect:is_cycling")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/Tanks/Ground:speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 192.0, 96.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Events")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 4 ), 3.5 ],
+"method": "texture_fps"
+} ]
+}
+
+[node name="Forever" instance=ExtResource( 1 )]
+rating_path = "res://Scenes/States/PlayState/ForeverRating.tscn"
+lock_camera = true
+miss_anims = false
+
+[node name="HealthSystem" parent="." index="0"]
+script = ExtResource( 6 )
+health = 3.0
+max_health = 3
+spritesheets = [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ]
+gravity = 35.0
+
+[node name="Powerdown" type="AudioStreamPlayer" parent="HealthSystem" index="0"]
+stream = ExtResource( 10 )
+volume_db = -2.0
+
+[node name="Dead" type="AudioStreamPlayer" parent="HealthSystem" index="1"]
+stream = ExtResource( 11 )
+volume_db = 20.0
+
+[node name="BF" type="Sprite" parent="HealthSystem" index="2"]
+visible = false
+scale = Vector2( 3, 3 )
+texture = ExtResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HealthSystem" index="3"]
+anims/die = SubResource( 1 )
+
+[node name="HealthBar" parent="HUD/HudElements" index="4"]
+visible = false
+
+[node name="Score" parent="HUD/HudElements" index="7"]
+visible = false
+text = "10291"
+
+[node name="Rank" parent="HUD/HudElements" index="8"]
+visible = false
+
+[node name="Info" type="Control" parent="HUD/HudElements" index="12"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Accuracy" type="Sprite" parent="HUD/HudElements/Info" index="0"]
+position = Vector2( 256, 392 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 13 )
+centered = false
+script = ExtResource( 15 )
+current_scene_path = NodePath("../../../..")
+
+[node name="Num0" type="Sprite" parent="HUD/HudElements/Info/Accuracy" index="0"]
+position = Vector2( 0, 16 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+frame = 39
+
+[node name="Num1" type="Sprite" parent="HUD/HudElements/Info/Accuracy" index="1"]
+position = Vector2( 16, 16 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+frame = 1
+
+[node name="Num2" type="Sprite" parent="HUD/HudElements/Info/Accuracy" index="2"]
+position = Vector2( 32, 16 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+
+[node name="Num3" type="Sprite" parent="HUD/HudElements/Info/Accuracy" index="3"]
+position = Vector2( 48, 16 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+
+[node name="Num4" type="Sprite" parent="HUD/HudElements/Info/Accuracy" index="4"]
+position = Vector2( 64, 16 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+frame = 37
+
+[node name="Num5" type="Sprite" parent="HUD/HudElements/Info/Accuracy" index="5"]
+position = Vector2( 80, 16 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+
+[node name="Num6" type="Sprite" parent="HUD/HudElements/Info/Accuracy" index="6"]
+position = Vector2( 96, 16 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+
+[node name="Num7" type="Sprite" parent="HUD/HudElements/Info/Accuracy" index="7"]
+position = Vector2( 112, 16 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+frame = 36
+
+[node name="Score" type="Sprite" parent="HUD/HudElements/Info" index="1"]
+position = Vector2( -648, 392 )
+scale = Vector2( 3, 3 )
+centered = false
+script = ExtResource( 16 )
+current_scene_path = NodePath("../../../..")
+
+[node name="Num0" type="Sprite" parent="HUD/HudElements/Info/Score" index="0"]
+position = Vector2( 0, 16 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+
+[node name="Num1" type="Sprite" parent="HUD/HudElements/Info/Score" index="1"]
+position = Vector2( 16, 16 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+
+[node name="Num2" type="Sprite" parent="HUD/HudElements/Info/Score" index="2"]
+position = Vector2( 32, 16 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+
+[node name="Num3" type="Sprite" parent="HUD/HudElements/Info/Score" index="3"]
+position = Vector2( 48, 16 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+
+[node name="Num4" type="Sprite" parent="HUD/HudElements/Info/Score" index="4"]
+position = Vector2( 64, 16 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+
+[node name="Num5" type="Sprite" parent="HUD/HudElements/Info/Score" index="5"]
+position = Vector2( 80, 16 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+
+[node name="Num6" type="Sprite" parent="HUD/HudElements/Info/Score" index="6"]
+position = Vector2( 96, 16 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+
+[node name="Miss" type="Sprite" parent="HUD/HudElements/Info" index="2"]
+position = Vector2( -648, 392 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 17 )
+centered = false
+script = ExtResource( 18 )
+current_scene_path = NodePath("../../../..")
+
+[node name="Num0" type="Sprite" parent="HUD/HudElements/Info/Miss" index="0"]
+position = Vector2( 80, 0 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+
+[node name="Num1" type="Sprite" parent="HUD/HudElements/Info/Miss" index="1"]
+position = Vector2( 96, 0 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+
+[node name="Num2" type="Sprite" parent="HUD/HudElements/Info/Miss" index="2"]
+visible = false
+position = Vector2( 112, 0 )
+texture = ExtResource( 14 )
+centered = false
+hframes = 10
+vframes = 4
+
+[node name="Player" parent="Positions" index="0"]
+position = Vector2( 891, 592 )
+
+[node name="Enemy" parent="Positions" index="1"]
+position = Vector2( 177, 592 )
+
+[node name="Girlfriend" parent="Positions" index="2"]
+position = Vector2( 640, 566 )
+
+[node name="Rating" parent="Positions" index="3"]
+position = Vector2( 440, 324 )
+script = ExtResource( 29 )
+current_scene_path = NodePath("../..")
+
+[node name="Camera" parent="." index="4"]
+visible = true
+position = Vector2( 480, 358 )
+
+[node name="Background" parent="." index="5"]
+z_index = -10
+z_as_relative = false
+
+[node name="Tanks" type="Node2D" parent="Background" index="0"]
+
+[node name="TextureRect" type="TextureRect" parent="Background/Tanks" index="0"]
+margin_left = 960.0
+margin_top = -2.0
+margin_right = 1680.0
+margin_bottom = -1.0
+rect_rotation = 90.0
+rect_scale = Vector2( 1, 962 )
+texture = SubResource( 3 )
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Ground" type="TileMap" parent="Background/Tanks" index="1"]
+position = Vector2( 0, 72 )
+scale = Vector2( 3, 3 )
+tile_set = SubResource( 4 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 524287, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0 )
+script = ExtResource( 5 )
+speed = 0.0
+
+[node name="Tank" type="TileMap" parent="Background/Tanks" index="2"]
+position = Vector2( 0, 72 )
+scale = Vector2( 3, 3 )
+tile_set = SubResource( 5 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -65536, 4, 0, -65528, 4, 0, 0, 4, 0, 8, 4, 0, 9, 5, 0, 65536, 4, 0, 65538, 0, 0, 65539, 13, 0, 65540, 3, 0, 65544, 5, 0, 65545, 6, 0, 131072, 4, 0, 131080, 6, 0, 131081, 8, 0, 196608, 4, 0, 196613, 7, 0, 196616, 8, 0, 196617, 8, 0, 262144, 2, 0, 262145, 2, 0, 262146, 3, 0, 262148, 12, 0, 262149, 2, 0, 262150, 2, 0, 262151, 2, 0, 262152, 2, 0, 262153, 2, 0, 327680, 10, 0, 327681, 10, 0, 327682, 11, 0, 327684, 9, 0, 327685, 10, 0, 327686, 10, 0, 327687, 10, 0, 327688, 10, 0, 327689, 10, 0 )
+
+[node name="Night" type="Node2D" parent="Background" index="1"]
+modulate = Color( 1, 1, 1, 0 )
+script = ExtResource( 28 )
+current_scene_path = NodePath("../..")
+
+[node name="TextureRect" type="TextureRect" parent="Background/Night" index="0"]
+margin_left = 960.0
+margin_top = -200.0
+margin_right = 1680.0
+margin_bottom = -199.0
+rect_rotation = 90.0
+rect_scale = Vector2( 1, 962 )
+texture = SubResource( 7 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TileMap" parent="Background/Night" index="1"]
+position = Vector2( 0, 72 )
+scale = Vector2( 3, 3 )
+tile_set = SubResource( 8 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 327690, 1, 0 )
+script = SubResource( 9 )
+speed = 64.0
+
+[node name="TextureRect2" type="TextureRect" parent="Background/Night" index="2"]
+margin_top = -40.0
+margin_right = 1028.0
+margin_bottom = 157.0
+rect_scale = Vector2( 3, 3 )
+texture = ExtResource( 24 )
+script = SubResource( 10 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+speed = 64.0
+
+[node name="Terrain" type="TileMap" parent="Background/Night" index="3"]
+position = Vector2( 0, 72 )
+scale = Vector2( 3, 3 )
+tile_set = SubResource( 8 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -65536, 3, 0, -65535, 3, 0, -65534, 3, 0, -65533, 3, 0, -65532, 3, 0, -65531, 3, 0, -65530, 3, 0, -65529, 3, 0, -65528, 3, 0, -65527, 3, 0, -65526, 3, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 327686, 10, 0, 327687, 10, 0, 327688, 10, 0 )
+script = SubResource( 9 )
+speed = 256.0
+
+[node name="Platform" type="Sprite" parent="Background/Night" index="4"]
+position = Vector2( 657, 484 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 21 )
+
+[node name="Platform2" type="Sprite" parent="Background/Night" index="5"]
+position = Vector2( 185, 484 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 21 )
+
+[node name="HumanLab" type="Node2D" parent="Background" index="2"]
+modulate = Color( 1, 1, 1, 0 )
+script = SubResource( 11 )
+current_scene_path = NodePath("../..")
+target_pos = -64.0
+
+[node name="TextureRect" type="TextureRect" parent="Background/HumanLab" index="0"]
+margin_left = 960.0
+margin_right = 1680.0
+margin_bottom = 1.0
+rect_rotation = 90.0
+rect_scale = Vector2( 1, 962 )
+texture = SubResource( 13 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TileMap" parent="Background/HumanLab" index="1"]
+position = Vector2( 0, 92 )
+scale = Vector2( 3, 3 )
+tile_set = SubResource( 8 )
+cell_size = Vector2( 122, 32 )
+format = 1
+tile_data = PoolIntArray( -65536, 6, 0, -65535, 6, 0, -65534, 6, 0, 327687, 10, 0 )
+
+[node name="BG2" type="TileMap" parent="Background/HumanLab" index="2"]
+position = Vector2( 0, 92 )
+scale = Vector2( 3, 3 )
+tile_set = SubResource( 8 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -1114110, 7, 0, -917499, 7, 0, -589822, 7, 0, -393211, 7, 0, 65543, 7, 0, 327687, 10, 0 )
+script = SubResource( 14 )
+copy_path = NodePath("../Terrain")
+
+[node name="Terrain" type="TileMap" parent="Background/HumanLab" index="3"]
+position = Vector2( 0, 72 )
+scale = Vector2( 3, 3 )
+tile_set = SubResource( 8 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -1179648, 4, 0, -1179640, 4, 0, -1114112, 4, 0, -1114104, 4, 0, -1048576, 4, 0, -1048568, 4, 0, -983040, 4, 0, -983032, 4, 0, -917504, 4, 0, -917496, 4, 0, -851968, 4, 0, -851960, 4, 0, -786432, 4, 0, -786424, 4, 0, -720896, 4, 0, -720888, 4, 0, -655360, 4, 0, -655352, 4, 0, -589824, 4, 0, -589816, 4, 0, -524288, 4, 0, -524280, 4, 0, -458752, 4, 0, -458744, 4, 0, -393216, 4, 0, -393208, 4, 0, -327680, 4, 0, -327672, 4, 0, -262144, 4, 0, -262136, 4, 0, -196608, 4, 0, -196600, 4, 0, -131072, 4, 0, -131064, 4, 0, -65536, 4, 0, -65528, 4, 0, 0, 4, 0, 8, 4, 0, 65536, 4, 0, 65544, 4, 0, 131072, 4, 0, 131080, 4, 0, 131081, 4, 0, 196608, 4, 0, 262144, 4, 0, 327680, 4, 0, 327686, 10, 0, 327687, 10, 0, 393216, 4, 0 )
+script = SubResource( 15 )
+speed = 64.0
+
+[node name="Platform" type="Sprite" parent="Background/HumanLab" index="4"]
+position = Vector2( 432, 484 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 32 )
+
+[node name="Labhuman" type="Sprite" parent="Background/HumanLab" index="5"]
+position = Vector2( 925, 177 )
+scale = Vector2( 3, 3 )
+texture = SubResource( 16 )
+script = SubResource( 17 )
+copy_path = NodePath("../Terrain")
+move_speed = 160.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Background/HumanLab/Labhuman" index="0"]
+position = Vector2( 11.6667, -15 )
+amount = 2
+lifetime = 2.0
+texture = ExtResource( 35 )
+direction = Vector2( -0.5, -1 )
+spread = 0.0
+gravity = Vector2( 0, 588 )
+initial_velocity = 330.0
+initial_velocity_random = 0.05
+angular_velocity = 217.98
+
+[node name="Sprite" type="Sprite" parent="Background/HumanLab/Labhuman" index="1"]
+position = Vector2( 11.6667, 3.66667 )
+texture = ExtResource( 35 )
+
+[node name="Events" type="AnimationPlayer" parent="." index="10"]
+anims/RESET = SubResource( 18 )
+anims/beat_112 = SubResource( 19 )
+anims/beat_128 = SubResource( 20 )
+anims/beat_188 = SubResource( 21 )
+anims/beat_196 = SubResource( 22 )
+anims/beat_224 = SubResource( 23 )
+anims/beat_248 = SubResource( 24 )
+anims/beat_256 = SubResource( 25 )
+anims/beat_288 = SubResource( 26 )
+anims/beat_304 = SubResource( 27 )
+anims/beat_32 = SubResource( 28 )
+anims/beat_324 = SubResource( 29 )
+anims/beat_96 = SubResource( 30 )
+script = ExtResource( 19 )

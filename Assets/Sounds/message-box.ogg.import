@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/message-box.ogg-1b96f9fa273a8dc7dd209b61e6fe4e40.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/message-box.ogg"
+dest_files=[ "res://.import/message-box.ogg-1b96f9fa273a8dc7dd209b61e6fe4e40.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

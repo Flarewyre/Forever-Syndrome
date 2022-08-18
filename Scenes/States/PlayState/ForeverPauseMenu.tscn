@@ -1,0 +1,356 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Assets/Other/Fonts/SuperMarioBrothers-4nmp.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Sprites/UI/Forever/MAPA.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/States/PlayState/PauseMenu.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/States/Options/OptionsMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Mobile/MobileMenuControls.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Sprites/UI/Forever/Crease.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/UI/Forever/terrain.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/UI/Forever/PAUSED.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/States/PlayState/Pause/Bouncy.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Sprites/UI/Forever/RESUME.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/UI/Forever/OPTIONS.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/UI/Forever/EXIT.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/UI/Forever/RETRY.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/UI/Forever/bushlarge.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/UI/Forever/bushsmall.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/UI/Forever/castle.png" type="Texture" id=16]
+[ext_resource path="res://Scripts/States/PlayState/Pause/ButtonHover.gd" type="Script" id=17]
+[ext_resource path="res://Assets/Sprites/UI/Forever/dots.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sprites/UI/Forever/mario.png" type="Texture" id=19]
+[ext_resource path="res://Scenes/States/PlayState/PauseTime.gd" type="Script" id=20]
+
+[sub_resource type="DynamicFont" id=1]
+size = 92
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 64
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 19 )
+region = Rect2( 16, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 19 )
+region = Rect2( 32, 0, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=17]
+animations = [ {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="Animation" id=13]
+resource_name = "RESET"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/PauseMenu/Options:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/PauseMenu/Options:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -32 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/PauseMenu/Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CanvasLayer/PauseMenu/Label:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 64 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/PauseMenu/Options:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/PauseMenu/Options:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 32 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/PauseMenu/Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CanvasLayer/PauseMenu/Label:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 2, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 32 ), Vector2( 0, 72 ), Vector2( 0, 64 ) ]
+}
+
+[node name="ForeverPauseMenu" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+margin_left = -166.0
+margin_top = -122.0
+margin_right = 1114.0
+margin_bottom = 358.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/TextureRect"]
+margin_left = 483.0
+margin_top = 363.0
+margin_right = 590.0
+margin_bottom = 440.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="PauseMenu" type="Node2D" parent="CanvasLayer"]
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/PauseMenu"]
+margin_left = 258.0
+margin_top = 32.0
+margin_right = 465.0
+margin_bottom = 77.0
+rect_scale = Vector2( 2.25, 2.25 )
+texture = ExtResource( 8 )
+script = ExtResource( 9 )
+gravity = 25.0
+bounce_power = 250.0
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu"]
+visible = false
+margin_top = 64.0
+margin_right = 960.0
+margin_bottom = 155.0
+custom_fonts/font = SubResource( 1 )
+text = "PAUSED"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/Label"]
+margin_top = 48.0
+margin_right = 960.0
+margin_bottom = 233.0
+custom_fonts/font = SubResource( 10 )
+text = "TURBO"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Node2D" parent="CanvasLayer/PauseMenu"]
+position = Vector2( 0, -32 )
+
+[node name="Resume" type="TextureButton" parent="CanvasLayer/PauseMenu/Options"]
+margin_left = 208.0
+margin_top = 502.0
+margin_right = 424.0
+margin_bottom = 559.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 108, 28 )
+texture_normal = ExtResource( 10 )
+script = ExtResource( 17 )
+
+[node name="Retry" type="TextureButton" parent="CanvasLayer/PauseMenu/Options"]
+margin_left = 570.0
+margin_top = 504.0
+margin_right = 734.0
+margin_bottom = 561.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 82, 28 )
+rect_clip_content = true
+texture_normal = ExtResource( 13 )
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option" type="TextureButton" parent="CanvasLayer/PauseMenu/Options"]
+margin_left = 196.0
+margin_top = 609.0
+margin_right = 435.0
+margin_bottom = 666.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 119, 28 )
+texture_normal = ExtResource( 11 )
+script = ExtResource( 17 )
+
+[node name="Exit" type="TextureButton" parent="CanvasLayer/PauseMenu/Options"]
+margin_left = 584.0
+margin_top = 608.0
+margin_right = 703.0
+margin_bottom = 664.0
+rect_scale = Vector2( 1.5, 1.5 )
+rect_pivot_offset = Vector2( 59, 28 )
+texture_normal = ExtResource( 12 )
+script = ExtResource( 17 )
+
+[node name="Time" type="Control" parent="CanvasLayer/PauseMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 20 )
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/PauseMenu/Time"]
+margin_left = 64.0
+margin_top = 370.0
+margin_right = 482.0
+margin_bottom = 393.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/PauseMenu/Time"]
+margin_left = 723.0
+margin_top = 242.0
+margin_right = 814.0
+margin_bottom = 306.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 16 )
+
+[node name="TextureRect6" type="TextureRect" parent="CanvasLayer/PauseMenu/Time"]
+margin_left = 658.0
+margin_top = 346.0
+margin_right = 683.0
+margin_bottom = 358.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect7" type="TextureRect" parent="CanvasLayer/PauseMenu/Time"]
+margin_left = 274.0
+margin_top = 346.0
+margin_right = 326.0
+margin_bottom = 358.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 14 )
+
+[node name="Dots" type="Sprite" parent="CanvasLayer/PauseMenu/Time"]
+position = Vector2( 24, 330 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 18 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 384, 15 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/PauseMenu/Time"]
+position = Vector2( 792, 306 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 17 )
+frame = 1
+playing = true
+centered = false
+
+[node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource( 4 )]
+visible = false
+inGame = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="MobileMenuControls" parent="." instance=ExtResource( 5 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 13 )
+anims/in = SubResource( 12 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/forever_powerdown.ogg-53fb952532ca9d2e771a216159ff9331.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/forever_powerdown.ogg"
+dest_files=[ "res://.import/forever_powerdown.ogg-53fb952532ca9d2e771a216159ff9331.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

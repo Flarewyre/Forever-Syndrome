@@ -1,0 +1,355 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Scripts/Objects/Character.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Characters/Bullet Bill.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Objects/Characters/Lakitu-Movement.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 6, 6 )
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0 ),
+"update": 2,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Sprite:rotation_degrees")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0 ),
+"update": 2,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Sprite:position")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 0 ),
+"update": 2,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 0, 1, 1, 1 ),
+"update": 2,
+"values": [ 1, 1, 0, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Sprite:rotation_degrees")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 0, 1, 1, 1 ),
+"update": 2,
+"values": [ 1.0, -2.0, -1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Sprite:position")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 0, 1, 1, 1 ),
+"update": 2,
+"values": [ Vector2( 0, 4 ), Vector2( 0, 3.5 ), Vector2( 0, 2 ), Vector2( 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "singDOWN"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 2,
+"values": [ 6, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Sprite:rotation_degrees")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 2,
+"values": [ -15.0, -10.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Sprite:position")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 2,
+"values": [ Vector2( 0, 7 ), Vector2( 0, 4 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "singDOWNMiss"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 17, 18 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 2,
+"values": [ 19, 20 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Sprite:rotation_degrees")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 2,
+"values": [ -10.0, -5.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Sprite:position")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 2,
+"values": [ Vector2( -10, 0 ), Vector2( -7, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "singLEFTMiss"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 6 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 2,
+"values": [ 21, 22 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Sprite:rotation_degrees")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 2,
+"values": [ 5.0, 4.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Sprite:position")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 2,
+"values": [ Vector2( 10, 0 ), Vector2( 7, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "singRIGHTMiss"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 9, 10 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Sprite:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 2,
+"values": [ 17, 18 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Sprite:rotation_degrees")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 2,
+"values": [ 15.0, 10.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Sprite:position")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 2,
+"values": [ Vector2( 0, -7 ), Vector2( 0, -4 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "singUPMiss"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 13, 14 ]
+}
+
+[node name="Bullet Bill" type="Node2D"]
+scale = Vector2( 4, 4 )
+script = ExtResource( 1 )
+spriteScale = Vector2( 4, 4 )
+camOffset = Vector2( 200, -200 )
+iconSheet = null
+characterColor = Color( 0.482353, 0.839216, 0.964706, 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource( 3 )
+target = Vector2( 144, 370 )
+accel = 3500.0
+move_speed = 850.0
+rot_speed = 12.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 14 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 2 )
+hframes = 23
+
+[node name="Sprite" type="Sprite" parent="Sprite"]
+texture = ExtResource( 2 )
+hframes = 23
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/RESET = SubResource( 13 )
+anims/idle = SubResource( 1 )
+anims/singDOWN = SubResource( 2 )
+anims/singDOWNMiss = SubResource( 10 )
+anims/singLEFT = SubResource( 11 )
+anims/singLEFTMiss = SubResource( 7 )
+anims/singRIGHT = SubResource( 12 )
+anims/singRIGHTMiss = SubResource( 8 )
+anims/singUP = SubResource( 6 )
+anims/singUPMiss = SubResource( 9 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Voices.ogg-e321a3bf45e107d0b8033f5c6bbe4654.oggstr"
+
+[deps]
+
+source_file="res://Assets/Songs/forever-syndrome-remix/Voices.ogg"
+dest_files=[ "res://.import/Voices.ogg-e321a3bf45e107d0b8033f5c6bbe4654.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

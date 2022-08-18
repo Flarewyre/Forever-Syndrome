@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/deadtheme.ogg-15b62545dad99a569551ea3a7a0ae6cd.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/deadtheme.ogg"
+dest_files=[ "res://.import/deadtheme.ogg-15b62545dad99a569551ea3a7a0ae6cd.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

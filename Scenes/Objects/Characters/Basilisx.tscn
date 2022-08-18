@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Sprites/Characters/Basilisx/Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Objects/Character.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+
+[sub_resource type="Animation" id=2]
+resource_name = "singDOWN"
+length = 0.6
+
+[sub_resource type="Animation" id=3]
+length = 0.6
+
+[sub_resource type="Animation" id=4]
+resource_name = "singRIGHT"
+length = 0.6
+
+[sub_resource type="Animation" id=5]
+length = 0.6
+
+[node name="Basilisx" type="Node2D"]
+scale = Vector2( -1, 1 )
+script = ExtResource( 2 )
+flipX = true
+camOffset = Vector2( 400, -300 )
+iconSheet = null
+characterColor = Color( 0.686275, 0.4, 0.807843, 1 )
+
+[node name="Body" type="Sprite" parent="."]
+position = Vector2( -135, 109 )
+rotation = -0.115192
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 104, 44, 32, 32 )
+
+[node name="Head" type="Sprite" parent="."]
+position = Vector2( -146.113, 93.8882 )
+rotation = 0.0541052
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 62.4948, 41.3881, 35.2057, 33.3447 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 1 )
+anims/singDOWN = SubResource( 2 )
+anims/singLEFT = SubResource( 3 )
+anims/singRIGHT = SubResource( 4 )
+anims/singUP = SubResource( 5 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

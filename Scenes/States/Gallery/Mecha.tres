@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/States/Gallery/Entry.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/States/Gallery/MechaPortrait.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Turbo Mecha Sonic"
+description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+origin = "Super Mario Bros. Z"
+portrait = ExtResource( 2 )

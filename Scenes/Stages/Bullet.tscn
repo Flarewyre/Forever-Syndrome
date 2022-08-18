@@ -1,0 +1,709 @@
+[gd_scene load_steps=64 format=2]
+
+[ext_resource path="res://Scenes/States/PlayState.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/547.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/546.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Characters/Boyfriend Lakitu.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Characters/Small Boyfriend Lakitu.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/States/PlayState/Health/ForeverHealth.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Sprites/Characters/Fire Boyfriend Lakitu.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/Stages/Bullet/0.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Stages/Bullet/1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Sounds/forever_powerdown.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Sounds/deadtheme.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Sprites/Characters/Dead Boyfriend Forever.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Other/Fonts/1_pixelFont_04b11.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://Assets/Sprites/UI/1.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Other/Fonts/2_ArcadeFont_Qhytsdakx.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://Scenes/Stages/Bullet/3.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Stages/Bullet/2.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/6.png" type="Texture" id=21]
+[ext_resource path="res://Scripts/Stages/Bullet/Terrain.gd" type="Script" id=22]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/1.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/2.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/3.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/4.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/5.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/12.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/13.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/9.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/11.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/17.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/18.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/14.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/16.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/7.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/8.png" type="Texture" id=37]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/15.png" type="Texture" id=38]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/10.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/21.png" type="Texture" id=40]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/23.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/20.png" type="Texture" id=42]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/19.png" type="Texture" id=43]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/22.png" type="Texture" id=44]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/24.png" type="Texture" id=45]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/night/552.png" type="Texture" id=46]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/544.png" type="Texture" id=47]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/549.png" type="Texture" id=48]
+[ext_resource path="res://Scenes/Stages/Events.gd" type="Script" id=49]
+[ext_resource path="res://Assets/Sprites/Stages/Bullet/539.png" type="Texture" id=50]
+
+[sub_resource type="Animation" id=5]
+resource_name = "die"
+length = 3.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:velocity_active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:velocity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0, 1 ),
+"update": 1,
+"values": [ 0.0, -1000.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Dead")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 3.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reload"
+} ]
+}
+
+[sub_resource type="GDScript" id=20]
+script/source = "extends Sprite
+
+export(NodePath) var current_scene_path
+onready var current_scene = get_node(current_scene_path)
+
+func _process(delta):
+	$Label.text = str(current_scene.score)
+"
+
+[sub_resource type="DynamicFont" id=21]
+size = 19
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=22]
+size = 37
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_char = -1
+extra_spacing_space = 1
+font_data = ExtResource( 18 )
+
+[sub_resource type="GDScript" id=23]
+script/source = "extends Sprite
+
+var accuracy = 100.0
+
+export(NodePath) var current_scene_path
+onready var current_scene = get_node(current_scene_path)
+
+func _process(delta):
+	if (current_scene.hitNotes > 0):
+		var totalNotes = float(current_scene.totalHitNotes + current_scene.realMisses)
+		accuracy = round((float(current_scene.hitNotes) / totalNotes) * 10000) / 100
+	
+	var name_string = \"ACCURACY\"
+	var acc_string = str(accuracy)
+	if ((acc_string.length() < 4 && accuracy >= 10) || acc_string.length() == 1):
+		acc_string += \".00\"
+	if (acc_string.length() == 4 && accuracy >= 10):
+		acc_string += \"0\"
+	acc_string += \"%\"
+	
+	if (current_scene.usedBot):
+		name_string += \" (BOT)\"
+	elif (current_scene.realMisses == 0 && current_scene.misses == 0):
+		if (current_scene.totalHitNotes == current_scene.hitNotes):
+			name_string += \" (SFC)\"
+		elif (current_scene.isGFC):
+			name_string += \" (GFC)\"
+		else:
+			name_string += \" (FC)\"
+	
+	$Label.text = acc_string
+	$Label2.text = name_string
+"
+
+[sub_resource type="AnimatedTexture" id=12]
+frames = 24
+fps = 24.0
+frame_0/texture = ExtResource( 23 )
+frame_1/texture = ExtResource( 24 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 25 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 26 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 27 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 21 )
+frame_5/delay_sec = 0.0
+frame_6/texture = ExtResource( 36 )
+frame_6/delay_sec = 0.0
+frame_7/texture = ExtResource( 37 )
+frame_7/delay_sec = 0.0
+frame_8/texture = ExtResource( 30 )
+frame_8/delay_sec = 0.0
+frame_9/texture = ExtResource( 39 )
+frame_9/delay_sec = 0.0
+frame_10/texture = ExtResource( 31 )
+frame_10/delay_sec = 0.0
+frame_11/texture = ExtResource( 28 )
+frame_11/delay_sec = 0.0
+frame_12/texture = ExtResource( 29 )
+frame_12/delay_sec = 0.0
+frame_13/texture = ExtResource( 34 )
+frame_13/delay_sec = 0.0
+frame_14/texture = ExtResource( 38 )
+frame_14/delay_sec = 0.0
+frame_15/texture = ExtResource( 35 )
+frame_15/delay_sec = 0.0
+frame_16/texture = ExtResource( 32 )
+frame_16/delay_sec = 0.0
+frame_17/texture = ExtResource( 33 )
+frame_17/delay_sec = 0.0
+frame_18/texture = ExtResource( 43 )
+frame_18/delay_sec = 0.0
+frame_19/texture = ExtResource( 42 )
+frame_19/delay_sec = 0.0
+frame_20/texture = ExtResource( 40 )
+frame_20/delay_sec = 0.0
+frame_21/texture = ExtResource( 44 )
+frame_21/delay_sec = 0.0
+frame_22/texture = ExtResource( 41 )
+frame_22/delay_sec = 0.0
+frame_23/texture = ExtResource( 45 )
+frame_23/delay_sec = 0.0
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends Sprite
+
+export var speed = 0
+export var limit : float
+
+func _physics_process(delta):
+	position.x -= speed
+	if position.x <= limit * scale.x:
+		position.x = 0
+"
+
+[sub_resource type="Shader" id=10]
+code = "shader_type canvas_item;
+
+uniform float warp_amount = 0.005;
+
+void fragment() {
+	vec2 uv = UV.xy;
+	uv.y += cos(uv.x*15.+TIME)*warp_amount;
+	uv.x += cos(uv.y*15.+TIME)*warp_amount;
+	COLOR = texture(TEXTURE, uv);
+}"
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 10 )
+shader_param/warp_amount = 0.005
+
+[sub_resource type="Animation" id=13]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/CaveBG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/CastleBG:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/NightBG2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Background/BonusBG:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Background/WaterBG:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "beat_159"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/CastleBG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "beat_223"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/NightBG2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "beat_287"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/BonusBG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "beat_347"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/WaterBG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "beat_479"
+length = 0.5
+
+[sub_resource type="Animation" id=14]
+resource_name = "beat_95"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/CaveBG:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Bullet" instance=ExtResource( 1 )]
+rating_path = "res://Scenes/States/PlayState/ForeverRating.tscn"
+lock_camera = true
+miss_anims = false
+
+[node name="HealthSystem" parent="." index="0"]
+script = ExtResource( 6 )
+health = 3.0
+max_health = 3
+spritesheets = [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 7 ) ]
+gravity = 35.0
+
+[node name="Powerdown" type="AudioStreamPlayer" parent="HealthSystem" index="0"]
+stream = ExtResource( 10 )
+volume_db = -2.0
+
+[node name="Dead" type="AudioStreamPlayer" parent="HealthSystem" index="1"]
+stream = ExtResource( 11 )
+volume_db = 20.0
+
+[node name="BF" type="Sprite" parent="HealthSystem" index="2"]
+visible = false
+scale = Vector2( 2, 2 )
+texture = ExtResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HealthSystem" index="3"]
+anims/die = SubResource( 5 )
+
+[node name="PlayerStrumLine" parent="HUD/HudElements" index="2"]
+modulate = Color( 1, 1, 1, 0.741176 )
+
+[node name="EnemyStrumLine" parent="HUD/HudElements" index="3"]
+modulate = Color( 1, 1, 1, 0.741176 )
+
+[node name="HealthBar" parent="HUD/HudElements" index="4"]
+visible = false
+
+[node name="Score" parent="HUD/HudElements" index="7"]
+visible = false
+text = "10291"
+
+[node name="Rank" parent="HUD/HudElements" index="8"]
+visible = false
+
+[node name="Info" type="Control" parent="HUD/HudElements" index="12"]
+modulate = Color( 1, 1, 1, 0.741176 )
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Score" type="Sprite" parent="HUD/HudElements/Info" index="0"]
+position = Vector2( -408, 408 )
+scale = Vector2( 2.1, 2.1 )
+texture = ExtResource( 17 )
+script = SubResource( 20 )
+current_scene_path = NodePath("../../../..")
+
+[node name="Label" type="Label" parent="HUD/HudElements/Info/Score" index="0"]
+margin_left = -62.0
+margin_top = 8.0
+margin_right = 2.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 21 )
+text = "0"
+
+[node name="Label2" type="Label" parent="HUD/HudElements/Info/Score" index="1"]
+margin_left = -124.0
+margin_top = -50.0
+margin_right = 115.0
+margin_bottom = 16.0
+rect_rotation = 0.0433254
+rect_scale = Vector2( 1.05, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = -2
+custom_constants/line_spacing = -10
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = SubResource( 22 )
+text = "PERSONAL SCORE"
+align = 1
+
+[node name="Accuracy" type="Sprite" parent="HUD/HudElements/Info" index="1"]
+position = Vector2( 408, 408 )
+scale = Vector2( 2.1, 2.1 )
+texture = ExtResource( 17 )
+script = SubResource( 23 )
+current_scene_path = NodePath("../../../..")
+
+[node name="Label" type="Label" parent="HUD/HudElements/Info/Accuracy" index="0"]
+margin_left = -62.0
+margin_top = 8.0
+margin_right = 2.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 21 )
+text = "100.00%"
+
+[node name="Label2" type="Label" parent="HUD/HudElements/Info/Accuracy" index="1"]
+margin_left = -126.0
+margin_top = -50.0
+margin_right = 113.0
+margin_bottom = 16.0
+rect_scale = Vector2( 1.05, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = -2
+custom_constants/line_spacing = -10
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = SubResource( 22 )
+text = "ACCURACY (SFC)"
+align = 1
+
+[node name="Player" parent="Positions" index="0"]
+position = Vector2( 620, 370 )
+
+[node name="Enemy" parent="Positions" index="1"]
+position = Vector2( 144, 370 )
+
+[node name="Girlfriend" parent="Positions" index="2"]
+position = Vector2( 640, 566 )
+
+[node name="Rating" parent="Positions" index="3"]
+position = Vector2( 440, 324 )
+
+[node name="Camera" parent="." index="4"]
+visible = true
+position = Vector2( 480, 358 )
+zoom = Vector2( 0.9, 0.9 )
+
+[node name="Background" parent="." index="5"]
+z_index = -10
+z_as_relative = false
+
+[node name="NightBG" type="Node2D" parent="Background" index="0"]
+
+[node name="BG" type="Sprite" parent="Background/NightBG" index="0"]
+scale = Vector2( 4, 4 )
+texture = SubResource( 12 )
+centered = false
+script = SubResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+speed = 2
+limit = -512.0
+
+[node name="loop" type="Sprite" parent="Background/NightBG/BG" index="0"]
+position = Vector2( 512, 0 )
+texture = SubResource( 12 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BG2" type="Sprite" parent="Background/NightBG" index="1"]
+position = Vector2( 0, 536 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 46 )
+centered = false
+script = SubResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+speed = 2
+limit = -512.0
+
+[node name="loop" type="Sprite" parent="Background/NightBG/BG2" index="0"]
+position = Vector2( 512, 0 )
+texture = ExtResource( 46 )
+centered = false
+
+[node name="CaveBG" type="Node2D" parent="Background" index="1"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="BG" type="Sprite" parent="Background/CaveBG" index="0"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 47 )
+centered = false
+script = SubResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+speed = 2
+limit = -256.0
+
+[node name="loop" type="Sprite" parent="Background/CaveBG/BG" index="0"]
+position = Vector2( 256, 0 )
+texture = ExtResource( 47 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CastleBG" type="Node2D" parent="Background" index="2"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="BG" type="Sprite" parent="Background/CastleBG" index="0"]
+position = Vector2( 0, -128 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 48 )
+centered = false
+script = SubResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+speed = 2
+limit = -841.0
+
+[node name="loop" type="Sprite" parent="Background/CastleBG/BG" index="0"]
+position = Vector2( 841, 0 )
+texture = ExtResource( 48 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NightBG2" type="Node2D" parent="Background" index="3"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="BG" type="Sprite" parent="Background/NightBG2" index="0"]
+scale = Vector2( 4, 4 )
+texture = SubResource( 12 )
+centered = false
+script = SubResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+speed = 2
+limit = -512.0
+
+[node name="loop" type="Sprite" parent="Background/NightBG2/BG" index="0"]
+position = Vector2( 512, 0 )
+texture = SubResource( 12 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BG2" type="Sprite" parent="Background/NightBG2" index="1"]
+position = Vector2( 0, 536 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 46 )
+centered = false
+script = SubResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+speed = 2
+limit = -512.0
+
+[node name="loop" type="Sprite" parent="Background/NightBG2/BG2" index="0"]
+position = Vector2( 512, 0 )
+texture = ExtResource( 46 )
+centered = false
+
+[node name="BonusBG" type="Node2D" parent="Background" index="4"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="BG" type="Sprite" parent="Background/BonusBG" index="0"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 50 )
+centered = false
+script = SubResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+speed = 2
+limit = -512.0
+
+[node name="loop" type="Sprite" parent="Background/BonusBG/BG" index="0"]
+position = Vector2( 512, 0 )
+texture = ExtResource( 50 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WaterBG" type="Node2D" parent="Background" index="5"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="BG" type="Sprite" parent="Background/WaterBG" index="0"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BG2" type="Sprite" parent="Background/WaterBG" index="1"]
+material = SubResource( 11 )
+position = Vector2( 0, 312 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+centered = false
+script = SubResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+speed = 2
+limit = -542.0
+
+[node name="loop" type="Sprite" parent="Background/WaterBG/BG2" index="0"]
+material = SubResource( 11 )
+position = Vector2( 542, 0 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Terrain" type="Node2D" parent="Background" index="6"]
+position = Vector2( 0, 560 )
+scale = Vector2( 4, 4 )
+script = ExtResource( 22 )
+blocks = [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 20 ), ExtResource( 19 ) ]
+speed = 24
+
+[node name="Events" type="AnimationPlayer" parent="." index="10"]
+anims/RESET = SubResource( 13 )
+anims/beat_159 = SubResource( 15 )
+anims/beat_223 = SubResource( 16 )
+anims/beat_287 = SubResource( 18 )
+anims/beat_347 = SubResource( 17 )
+anims/beat_479 = SubResource( 19 )
+anims/beat_95 = SubResource( 14 )
+script = ExtResource( 49 )

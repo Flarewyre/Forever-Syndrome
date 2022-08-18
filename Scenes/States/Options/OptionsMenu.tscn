@@ -1,0 +1,139 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Assets/Other/Fonts/SuperMarioBrothers-4nmp.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/Objects/ChoiceMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/States/Options/OptionsMenu.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/States/Options/OptionsChoiceMenu.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/States/Options/ValueEdit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Sounds/popup.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Other/Fonts/arial.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/Sprites/UI/Options/banner.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/UI/Options/bg.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/States/Options/BG.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Sounds/cancel.wav" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Sounds/scroll2.wav" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Sounds/scroll.wav" type="AudioStream" id=13]
+
+[sub_resource type="DynamicFont" id=4]
+size = 56
+outline_size = 8
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[node name="OptionsMenu" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="BG" type="TextureRect" parent="."]
+margin_right = 1152.0
+margin_bottom = 960.0
+texture = ExtResource( 9 )
+stretch_mode = 2
+script = ExtResource( 10 )
+
+[node name="ChoiceMenu" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 60 )
+scale = Vector2( 0.8, 0.8 )
+script = ExtResource( 4 )
+
+[node name="TopBar" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="TopBar"]
+texture = ExtResource( 8 )
+centered = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar"]
+margin_top = 3.0
+margin_right = 1200.0
+margin_bottom = 110.0
+rect_scale = Vector2( 0.8, 0.8 )
+
+[node name="LastPage" type="Label" parent="TopBar/HBoxContainer"]
+modulate = Color( 0.709804, 0.709804, 0.709804, 1 )
+margin_top = 25.0
+margin_right = 397.0
+margin_bottom = 81.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 4 )
+text = "LAST"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurPage" type="Label" parent="TopBar/HBoxContainer"]
+margin_left = 401.0
+margin_top = 25.0
+margin_right = 798.0
+margin_bottom = 81.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 4 )
+text = "CURRENT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextPage" type="Label" parent="TopBar/HBoxContainer"]
+modulate = Color( 0.709804, 0.709804, 0.709804, 1 )
+margin_left = 802.0
+margin_top = 25.0
+margin_right = 1200.0
+margin_bottom = 81.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 4 )
+text = "NEXT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EditValue" type="CanvasLayer" parent="."]
+layer = 11
+
+[node name="ValueEdit" parent="EditValue" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="CancelStream" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 11 )
+volume_db = 4.0
+
+[node name="PopUpStream" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 13 )
+volume_db = 4.0
+
+[node name="ScrollStream" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 12 )
+volume_db = 4.0
+
+[node name="ConfirmStream" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 6 )
+volume_db = 4.0
+
+[node name="DescriptionRect" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_top = 637.0
+margin_right = 960.0
+margin_bottom = 720.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Description" type="Label" parent="DescriptionRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 3 )
+text = "Awesome description."
+align = 1
+valign = 1

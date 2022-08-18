@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/States/Gallery/Entry.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/States/Gallery/MarioPortrait.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "Super Mario"
+description = "Mario is a character created by Japanese video game designer Shigeru Miyamoto. He is the title character of the Mario franchise and the mascot of Japanese video game company Nintendo. Mario has appeared in over 200 video games since his creation. Depicted as a short, pudgy, Italian plumber who resides in the Mushroom Kingdom, his adventures generally center on rescuing Princess Peach from the Koopa villain Bowser. Mario has access to a variety of power-ups that give him different abilities. Mario's fraternal twin brother is Luigi."
+origin = "Super Mario Bros. Z"
+portrait = ExtResource( 2 )

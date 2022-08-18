@@ -1,0 +1,223 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Assets/Sprites/UI/Gallery/BG.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Other/Fonts/arial.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scenes/States/Gallery/Mecha.tres" type="Resource" id=3]
+[ext_resource path="res://Assets/Sounds/scroll2.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sounds/cancel.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sounds/scroll.wav" type="AudioStream" id=6]
+[ext_resource path="res://Scenes/States/Gallery/MarioSMBZ.tres" type="Resource" id=7]
+[ext_resource path="res://Assets/Other/Fonts/SuperMarioBrothers-4nmp.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Assets/Other/Fonts/arialbi.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Scripts/States/GalleryState.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Music/freakyMenu.ogg" type="AudioStream" id=11]
+
+[sub_resource type="DynamicFont" id=4]
+size = 56
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 28
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 28
+use_filter = true
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 46
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.584314, 0.529412, 1, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.59, 0.59, 0.59, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.156863, 0.0980392, 0.588235, 1 )
+border_blend = true
+
+[node name="GalleryState" type="Node2D"]
+script = ExtResource( 10 )
+entries = [ ExtResource( 3 ), ExtResource( 7 ) ]
+
+[node name="Music" type="Node" parent="."]
+
+[node name="MusicStream" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 11 )
+volume_db = 3.0
+
+[node name="VocalStream" type="AudioStreamPlayer" parent="Music"]
+
+[node name="DebugBPMStream" type="AudioStreamPlayer" parent="Music"]
+
+[node name="Info" type="Node" parent="."]
+
+[node name="Background" type="Sprite" parent="Info"]
+modulate = Color( 0.921569, 0.933333, 1, 1 )
+texture = ExtResource( 1 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Name" type="Label" parent="Info"]
+margin_top = 48.0
+margin_right = 960.0
+margin_bottom = 380.0
+custom_fonts/font = SubResource( 4 )
+text = "TURBO MECHA SONIC"
+align = 1
+
+[node name="Description" type="Label" parent="Info"]
+margin_left = 472.0
+margin_top = 225.0
+margin_right = 863.0
+margin_bottom = 554.0
+custom_fonts/font = SubResource( 3 )
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+autowrap = true
+clip_text = true
+
+[node name="Origin" type="Label" parent="Info"]
+margin_left = 472.0
+margin_top = 174.0
+margin_right = 863.0
+margin_bottom = 226.0
+custom_fonts/font = SubResource( 5 )
+text = "From: Super Mario Bros. Z"
+align = 1
+autowrap = true
+clip_text = true
+
+[node name="ColorRect" type="ColorRect" parent="Info"]
+margin_left = 456.0
+margin_top = 214.0
+margin_right = 879.0
+margin_bottom = 217.0
+color = Color( 1, 1, 1, 0.447059 )
+
+[node name="ColorRect2" type="ColorRect" parent="Info"]
+margin_left = 64.0
+margin_top = 570.0
+margin_right = 896.0
+margin_bottom = 573.0
+color = Color( 1, 1, 1, 0.447059 )
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="MoveStream" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 4 )
+volume_db = 4.0
+
+[node name="ConfirmStream" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 6 )
+volume_db = 2.5
+
+[node name="CancelStream" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 5 )
+volume_db = 4.0
+
+[node name="Buttons" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Buttons"]
+margin_top = 601.0
+margin_right = 960.0
+margin_bottom = 692.0
+custom_constants/separation = 32
+alignment = 1
+
+[node name="Prev" type="Button" parent="Buttons/HBoxContainer"]
+margin_left = 139.0
+margin_right = 397.0
+margin_bottom = 91.0
+focus_neighbour_left = NodePath("../Exit")
+focus_neighbour_right = NodePath("../Next")
+mouse_filter = 2
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+button_mask = 0
+text = " PREVIOUS "
+
+[node name="Next" type="Button" parent="Buttons/HBoxContainer"]
+margin_left = 429.0
+margin_right = 645.0
+margin_bottom = 91.0
+focus_neighbour_left = NodePath("../Prev")
+focus_neighbour_right = NodePath("../Exit")
+mouse_filter = 2
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+button_mask = 0
+text = "  NEXT  "
+
+[node name="Exit" type="Button" parent="Buttons/HBoxContainer"]
+margin_left = 677.0
+margin_right = 821.0
+margin_bottom = 91.0
+focus_neighbour_left = NodePath("../Next")
+focus_neighbour_right = NodePath("../Prev")
+mouse_filter = 2
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+button_mask = 0
+text = " EXIT "

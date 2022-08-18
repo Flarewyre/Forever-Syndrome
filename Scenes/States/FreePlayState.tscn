@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Sprites/UI/menuBG.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/States/FreePlayState.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sounds/cancel_menu.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Other/Fonts/font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Scenes/States/FreePlay/FreeplayChoiceMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Mobile/MobileMenuControls.tscn" type="PackedScene" id=9]
+
+[node name="FreeplayState" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Background" type="Sprite" parent="."]
+modulate = Color( 0.572549, 0.443137, 0.992157, 1 )
+position = Vector2( 643, 365 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InfoBox" type="Node2D" parent="CanvasLayer"]
+
+[node name="JsonDetails" type="ColorRect" parent="CanvasLayer/InfoBox"]
+margin_left = 22.0
+margin_top = 100.0
+margin_right = 462.0
+margin_bottom = 641.0
+color = Color( 0, 0, 0, 0.486275 )
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/InfoBox/JsonDetails"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/normal_font = ExtResource( 5 )
+text = "AWESOME"
+
+[node name="Icons" type="Node2D" parent="CanvasLayer/InfoBox"]
+position = Vector2( 1140, 560 )
+scale = Vector2( 1.4, 1.4 )
+
+[node name="Enemy" type="Sprite" parent="CanvasLayer/InfoBox/Icons"]
+scale = Vector2( 0.714286, 0.714286 )
+offset = Vector2( -50, 0 )
+hframes = 2
+
+[node name="Player" type="Sprite" parent="CanvasLayer/InfoBox/Icons"]
+scale = Vector2( 0.714286, 0.714286 )
+offset = Vector2( 50, 0 )
+flip_h = true
+hframes = 2
+
+[node name="ChoiceMenu" parent="CanvasLayer" instance=ExtResource( 6 )]
+useIcons = true
+iconSize = Vector2( 150, 150 )
+iconSelectionAnim = true
+canUseFinder = true
+
+[node name="SettingsBox" type="ColorRect" parent="CanvasLayer"]
+margin_left = 446.0
+margin_top = 12.0
+margin_right = 884.0
+margin_bottom = 128.0
+color = Color( 0, 0, 0, 0.486275 )
+
+[node name="Label" type="Label" parent="CanvasLayer/SettingsBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 215.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = ExtResource( 5 )
+text = "< HARD >
+1.0x"
+align = 2
+
+[node name="Score" type="Label" parent="CanvasLayer/SettingsBox"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 252.0
+margin_bottom = 69.0
+custom_fonts/font = ExtResource( 5 )
+text = "HIGHSCORE
+00000000000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabHint" type="Label" parent="CanvasLayer/SettingsBox"]
+margin_left = 5.0
+margin_top = 78.0
+margin_right = 437.0
+margin_bottom = 113.0
+custom_fonts/font = ExtResource( 5 )
+text = "Press TAB for more info."
+
+[node name="InfoBox2" type="ColorRect" parent="CanvasLayer"]
+margin_left = 961.0
+margin_top = 661.0
+margin_right = 1268.0
+margin_bottom = 703.0
+color = Color( 0, 0, 0, 0.486275 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/InfoBox2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = ExtResource( 5 )
+text = "101 SONGS"
+align = 2
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="MobileMenuControls" parent="." instance=ExtResource( 9 )]

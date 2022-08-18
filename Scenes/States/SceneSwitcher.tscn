@@ -1,0 +1,164 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Sounds/hit_sound.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Scenes/States/MainMenuState.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/SceneSwitcher.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sprites/UI/transition_mask.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Music/gameOver.ogg" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect/Light2D:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_in"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect/Light2D:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2.5, 0.01 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade_out"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect/Light2D:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.01, 2.5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "unpause"
+} ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=4]
+light_mode = 2
+
+[node name="SceneSwitcher" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 3 )
+main_scene = ExtResource( 2 )
+
+[node name="Music" type="Node" parent="."]
+pause_mode = 1
+
+[node name="MusicStream" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 5 )
+bus = "Music"
+
+[node name="VocalStream" type="AudioStreamPlayer" parent="Music"]
+bus = "Vocals"
+
+[node name="DebugBPMStream" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 1 )
+
+[node name="Transition" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+anims/RESET = SubResource( 1 )
+anims/fade_in = SubResource( 2 )
+anims/fade_out = SubResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="Transition"]
+light_mask = 2
+material = SubResource( 4 )
+margin_right = 960.0
+margin_bottom = 720.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Light2D" type="Light2D" parent="Transition/ColorRect"]
+position = Vector2( 472, 356 )
+texture = ExtResource( 4 )
+texture_scale = 2.5
+mode = 3
+range_layer_max = 120
+range_item_cull_mask = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Transition"]
+visible = false
+margin_right = 960.0
+margin_bottom = 720.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="animation_finished" from="Transition/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
